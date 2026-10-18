@@ -1,0 +1,40 @@
+.game-overlay {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: min(84vw, 330px);
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 163, 255, 0.6);
+  background: rgba(16, 38, 61, 0.96);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.game-overlay__title {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.game-overlay__accent {
+  color: var(--color-green);
+}
+
+.game-overlay__title--loss {
+  color: var(--color-red);
+}
+
+.game-overlay__detail {
+  font-size: var(--fs-body);
+  color: var(--color-soft-gray);
+}

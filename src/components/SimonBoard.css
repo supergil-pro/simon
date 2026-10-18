@@ -62,4 +62,143 @@
   background: var(--color-charcoal);
   border: 5px solid var(--color-surface);
   pointer-events: none;
+  z-index: 3;
+}
+
+.simon-board__pad {
+  position: relative;
+  transition: filter 80ms ease, box-shadow 80ms ease;
+}
+
+.simon-board__pad--green {
+  --flame: #00d26a;
+  --flame-soft: rgba(0, 210, 106, 0.55);
+}
+
+.simon-board__pad--red {
+  --flame: #ff3b30;
+  --flame-soft: rgba(255, 59, 48, 0.55);
+}
+
+.simon-board__pad--yellow {
+  --flame: #ffd600;
+  --flame-soft: rgba(255, 214, 0, 0.55);
+}
+
+.simon-board__pad--blue {
+  --flame: #00a3ff;
+  --flame-soft: rgba(0, 163, 255, 0.55);
+}
+
+.simon-board__pad[aria-disabled='true'] {
+  cursor: default;
+}
+
+/* Sequence playback / paused: unlit pads are dimmed */
+.simon-board--dimmed .simon-board__pad {
+  filter: brightness(0.45) saturate(0.7);
+}
+
+.simon-board .simon-board__pad.is-active {
+  filter: brightness(1.35) saturate(1.1);
+  z-index: 1;
+}
+
+.simon-board__pad--green.is-active {
+  box-shadow: 0 0 28px 6px rgba(0, 210, 106, 0.8);
+}
+
+.simon-board__pad--red.is-active {
+  box-shadow: 0 0 28px 6px rgba(255, 59, 48, 0.8);
+}
+
+.simon-board__pad--yellow.is-active {
+  box-shadow: 0 0 28px 6px rgba(255, 214, 0, 0.8);
+}
+
+.simon-board__pad--blue.is-active {
+  box-shadow: 0 0 28px 6px rgba(0, 163, 255, 0.8);
+}
+
+/* Player press: flickering flames around the pad in its own color */
+.simon-board .simon-board__pad:has(.pad-flame) {
+  z-index: 2;
+}
+
+.pad-flame {
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: flame-flicker 0.14s ease-in-out infinite alternate;
+}
+
+.pad-flame i {
+  position: absolute;
+  width: calc(var(--size) * 0.65);
+  height: calc(var(--size) * 1.8);
+  margin: calc(var(--size) * -0.9) 0 0 calc(var(--size) * -0.325);
+  /* Teardrop flame tongue: rounded base, pointed tip */
+  border-radius: 50% 50% 50% 50% / 80% 80% 25% 25%;
+  background: radial-gradient(
+    ellipse 50% 60% at 50% 72%,
+    #ffffff 0%,
+    #fff5b8 22%,
+    var(--flame) 55%,
+    var(--flame-soft) 75%,
+    transparent 100%
+  );
+  filter: blur(1px) drop-shadow(0 0 8px var(--flame));
+  opacity: 0;
+  animation: flame-rise 0.9s ease-out infinite;
+}
+
+@keyframes flame-flicker {
+  from {
+    box-shadow:
+      0 0 14px 5px var(--flame),
+      0 -14px 36px 12px var(--flame-soft),
+      inset 0 0 22px rgba(255, 255, 255, 0.45);
+  }
+  to {
+    box-shadow:
+      0 0 22px 9px var(--flame),
+      0 -26px 56px 20px var(--flame-soft),
+      inset 0 0 32px rgba(255, 255, 255, 0.6);
+  }
+}
+
+@keyframes flame-rise {
+  0% {
+    transform: translateY(10px) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-45px) scale(0.75) rotate(-6deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-95px) scale(0.2) rotate(6deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simon-board__pad {
+    transition: none;
+  }
+
+  /* Static glow only, no moving flames */
+  .pad-flame {
+    animation: none;
+    box-shadow: 0 0 16px 6px var(--flame);
+  }
+
+  .pad-flame i {
+    display: none;
+  }
 }

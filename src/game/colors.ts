@@ -11,3 +11,8 @@ export const COLOR_LABELS: Record<Color, string> = {
 };
 
 export const TOTAL_ROUNDS = 10;
+
+// Game-only randomness; repeats are allowed
+export function randomColor(): Color {
+  return BOARD_COLORS[Math.floor(Math.random() * BOARD_COLORS.length)];
+}
