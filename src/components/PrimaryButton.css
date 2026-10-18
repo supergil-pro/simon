@@ -1,0 +1,35 @@
+.primary-button {
+  display: block;
+  width: 80%;
+  max-width: 320px;
+  min-height: 52px;
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-button);
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: var(--fs-button);
+  font-weight: 600;
+  box-shadow: var(--shadow-button);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+  filter: brightness(0.92);
+}
+
+.primary-button:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.primary-button:disabled {
+  background: #5a6b7d;
+  box-shadow: none;
+  cursor: default;
+}

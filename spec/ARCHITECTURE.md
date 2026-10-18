@@ -225,3 +225,10 @@ type HistoryData = {
 7. [MDN – Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) – אירועי הסתרה וחזרה של אפליקציה.
 8. [Vite PWA – Prompt for Update](https://vite-pwa-org.netlify.app/guide/prompt-for-update) – שליטה בעדכוני Service Worker ללא רענון אוטומטי.
 9. [GitHub Docs – GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions) – מכסות וחיוב Actions.
+
+## החלטות מרכזיות (ADRs)
+
+### ADR-1: לוח Simon ב-CSS Grid וניווט ב-State פנימי
+**הקשר:** הלוח צריך ארבעה אזורי מגע סמנטיים (`button`) במיקום מרחבי קבוע, בממשק RTL; הניווט בין שני המסכים חייב להיות ללא טעינת דף.
+**החלטה:** הלוח ממומש כ-CSS Grid של 2×2 עם `border-radius` בפינה החיצונית של כל רבע ודיסק מרכזי מעל, ועם `direction: ltr` פנימי כדי שהמיקום לא יתהפך ב-RTL. הניווט הוא `useState` ב-`App` עם כפתורים (ללא Router וללא שינוי URL).
+**השלכות:** אין צורך ב-SVG או בספריות; ה-State של המשחק יוחזק בעתיד ב-`App`, מעל שני המסכים, ולכן לא יאבד במעבר מסך.

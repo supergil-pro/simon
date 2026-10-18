@@ -1,0 +1,65 @@
+.simon-board {
+  /* Spatial layout must not flip in RTL */
+  direction: ltr;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  width: min(86vw, 340px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--color-charcoal);
+  border: 6px solid var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.simon-board__pad {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.simon-board__pad:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: -6px;
+}
+
+.simon-board__pad--green {
+  background: var(--color-green);
+  border-top-left-radius: 100%;
+}
+
+.simon-board__pad--red {
+  background: var(--color-red);
+  border-top-right-radius: 100%;
+}
+
+.simon-board__pad--yellow {
+  background: var(--color-yellow);
+  border-bottom-left-radius: 100%;
+}
+
+.simon-board__pad--blue {
+  background: var(--color-blue);
+  border-bottom-right-radius: 100%;
+}
+
+.simon-board__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--color-charcoal);
+  border: 5px solid var(--color-surface);
+  pointer-events: none;
+}

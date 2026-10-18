@@ -1,0 +1,41 @@
+:root {
+  /* Game colors (Style Guide) */
+  --color-green: #00d26a;
+  --color-red: #ff3b30;
+  --color-yellow: #ffd600;
+  --color-blue: #00a3ff;
+
+  /* Neutrals */
+  --color-charcoal: #0f0f0f;
+  --color-soft-gray: #e5e5e5;
+  --color-white: #ffffff;
+
+  /* Surfaces (sampled from Mockups) */
+  --color-bg: #061628;
+  --color-surface: #10263d;
+  --color-border: rgba(0, 163, 255, 0.25);
+  --color-muted: #9fb3c8;
+
+  /* Typography */
+  --font-family: 'Heebo', Arial, sans-serif;
+  --fs-h1: 32px;
+  --fs-h2: 24px;
+  --fs-h3: 20px;
+  --fs-body: 16px;
+  --fs-caption: 14px;
+  --fs-button: 16px;
+
+  /* Spacing scale */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+
+  /* Shape */
+  --radius-card: 16px;
+  --radius-button: 999px;
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-button: 0 6px 16px rgba(0, 163, 255, 0.35);
+
+  --content-max-width: 480px;
+}
